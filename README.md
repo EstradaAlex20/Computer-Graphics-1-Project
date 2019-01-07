@@ -2,7 +2,6 @@
 
 This is a game made using python and OpenGl. Most of this was a class project with the purpose of learning about OpenGl. We kind of arbitrarily chose to use python. This game is a 3rd person space shooter with some asteroids floating in 3D space. Each object in this game (the ship, the asteroids, the bullets, and the skybox) is a mesh in the form of a .obj file. This game also implements a diffuse, ambient, and reflective lighting. 
 
-Here is a screenshot from inside the game
 ![picture](https://github.com/EstradaAlex20/Computer-Graphics-1-Project/blob/master/InGame.png)
 
 ## Running the Game
