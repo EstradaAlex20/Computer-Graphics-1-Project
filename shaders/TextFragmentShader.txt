@@ -1,0 +1,14 @@
+layout(binding=0) uniform sampler2DArray tex;
+in vec2 v_texCoord;
+out vec4 color;
+void main(){
+	ivec2 tsize = textureSize(tex, 0).xy;
+    ivec3 texc = ivec3(tsize * v_texCoord, 0);
+    vec4 p = texelFetch(tex, texc, 0);
+    if(p.a < 0.01)
+        discard;
+    else
+        color = vec4(1.0);
+    color.rgb = vec3(p.a);
+    color.a = 1.0;
+}

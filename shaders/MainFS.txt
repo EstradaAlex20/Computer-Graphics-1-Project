@@ -1,0 +1,24 @@
+in vec2 v_texCoord;
+in vec3 v_normal;
+in vec3 v_worldPos;
+layout(binding=0) uniform sampler2DArray tex;
+layout(binding=3) uniform samplerCube skybox;
+out vec4 color;
+void main(){
+    vec3 V = normalize(eyePos - v_worldPos);
+    vec3 N = normalize(v_normal);
+    vec3 L = normalize(lightPos - v_worldPos);
+    vec3 refl = reflect(-v_worldPos, N);
+    vec4 reflectColor = texture(skybox, refl);
+    float dp = max(0.0, dot(N,L));
+    color = texture(tex, vec3(v_texCoord,0));
+    color.a *= enemyAlpha;
+    color.rgb *= diffuse * specular;
+    color.rgb *= dp;
+    color.rgb = mix(color.rgb, reflectColor.rgb, 0.7);
+
+    //floar sp no go
+    //rgb line *= diffuse only
+
+
+}

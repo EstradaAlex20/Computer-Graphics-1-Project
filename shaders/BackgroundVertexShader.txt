@@ -1,0 +1,11 @@
+layout(location=0) in vec2 position;
+layout(location=1) in vec2 texCoord;
+out vec2 v_texCoord;
+void main(){
+    v_texCoord = texCoord;
+    vec3 p = vec3(position, 1.0);
+    p = p * worldMatrix;
+    p = p * viewMatrix;
+    gl_Position = vec4( p.xy, -1, 1 );
+	gl_PointSize = 1;
+}

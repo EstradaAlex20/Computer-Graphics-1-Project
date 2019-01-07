@@ -1,0 +1,11 @@
+layout(location=0) in vec3 position;
+out vec3 v_position;
+void main(){
+    v_position = position;
+    vec4 p = vec4(position,0);
+    p = p * viewMatrix;
+    p.w = 1;
+    p = p * projMatrix;
+    p.z = p.w;
+    gl_Position=p;
+}

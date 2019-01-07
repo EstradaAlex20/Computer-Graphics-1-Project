@@ -1,0 +1,10 @@
+layout(location=0) in vec3 position;
+
+
+void main(){
+    vec4 p = vec4(position, 1.0);
+    p = p * worldMatrix;
+    p = p * viewMatrix;
+    gl_Position = vec4( p.xy, -1, 1 );
+	gl_PointSize = gl_VertexID % 5;
+}

@@ -1,0 +1,9 @@
+layout(location=0) in vec2 position;
+layout(location=1) in vec2 texCoord;
+out vec2 v_texCoord;
+void main(){
+    vec2 pixPos = textPosInPixels + vec2(position.x * textQuadSizeInPixels.x, (1.0-position.y) * textQuadSizeInPixels.y);
+    v_texCoord = position;
+    vec2 temp = vec2(-1) + pixPos * screenSize.zw * vec2(2.0);
+    gl_Position = vec4(temp, 0,1);
+}

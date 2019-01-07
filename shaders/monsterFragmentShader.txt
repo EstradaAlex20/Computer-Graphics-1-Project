@@ -1,0 +1,9 @@
+in vec2 v_texCoord;
+layout(binding=0) uniform sampler2DArray tex;
+out vec4 color;
+void main(){
+    vec4 colorT = texture(tex, vec3(v_texCoord,0));
+    colorT.rgb *= diffuse;
+    colorT.a *= enemyAlpha;
+    color = colorT;
+}
